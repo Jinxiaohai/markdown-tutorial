@@ -1,4 +1,3 @@
-[TOC]
 # Usage  
 Keybindings are grouped by prefixes based on their function. For example, the commands for inserting links are grouped
 under C-c C-a, where the C-a is a mnemonic for the HTML  tag. In other cases, the connection to HTML is not direct.
