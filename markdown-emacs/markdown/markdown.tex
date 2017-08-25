@@ -1,0 +1,178 @@
+% -*- coding:utf-8 -*-
+\documentclass[11pt]{beamer}
+\usepackage[space]{ctex}
+
+%%%%%%%%%% 定义待使用的颜色%%%%%%%%%
+\definecolor{seagreen}{RGB}{46, 139, 87}
+\definecolor{darkstategray}{RGB}{47, 79, 79}
+\definecolor{snow}{RGB}{205, 201, 201}
+\definecolor{seashell}{RGB}{238, 229, 222}
+\definecolor{antiquewhite}{RGB}{205, 192, 176}
+\definecolor{darkmagenta}{RGB}{139, 0, 139}
+\definecolor{darkblue}{RGB}{0, 0, 139}
+%%%%%%%%%% 整个大标题的设置%%%%%%%%%
+% 设置大标题的颜色和背景颜色，以及字体的控制。
+\setbeamertemplate{title}{\vspace{-3mm}}
+\setbeamercolor{title}{fg=seagreen, bg=white}
+\setbeamerfont{title}{family=\rmfamily, series=\bfseries}
+
+%%%%%%%%%% 帧标题的控制%%%%%%%%%%%%%
+% 设置帧标题中心对齐，位置降低2.5mm。
+\setbeamertemplate{frametitle}{\vspace{1mm}\centering\insertframetitle\par}
+% 帧标题颜色为seagreen，背景为白色。
+\setbeamercolor{frametitle}{fg=seagreen, bg=white}
+% 帧标题字体的控制
+\setbeamerfont{frametitle}{family=\sffamily, series=\bfseries, shape=\sffamily}
+
+%%%%%%%%%%% 图表的标题%%%%%%%%%%%%%
+% 给插图或者表添加序号。
+\setbeamertemplate{caption}[numbered]
+% 将图和表的字体改为强调字体
+\setbeamerfont{caption}{family=\em}
+
+%%%%%%%%%%% 文本的控制%%%%%%%%%%%%%
+% 设置常规文本的颜色和背景色
+\setbeamercolor{normal text}{fg=black, bg=white}
+% 将强调的文本(使用\alert命令)颜色设为紫色
+\setbeamercolor{alerted text}{fg=purple}
+
+%%%%%%%%%%% 列表的控制%%%%%%%%%%%%
+% 将常规列表的标志样式改为球形
+\setbeamertemplate{itemize item}[ball]
+\setbeamercolor{item}{fg=seagreen, bg=white}
+
+%%%%%%%% 底边导航条的控制%%%%%%%%%
+% wd为盒子的宽度, 下面的vspace*命令想要有效beamercolorbox必须带dp参数.
+% ht控制框的高度，
+\setbeamercolor{firstcolor}{bg=snow, fg=seagreen}
+\setbeamercolor{secondcolor}{bg=seashell, fg=seagreen}
+\setbeamercolor{thirdcolor}{bg=antiquewhite, fg=seagreen}
+\setbeamertemplate{footline}{
+  \vspace*{3mm}{
+    \leavevmode%
+    \hbox{%
+      \begin{beamercolorbox}[wd=0.25\paperwidth, ht=2ex, dp=0.8ex, center, shadow=true]{firstcolor}
+        {\insertshortauthor}
+      \end{beamercolorbox}%
+      
+      \begin{beamercolorbox}[wd=0.5\paperwidth, ht=2ex, dp=0.8ex, center, shadow=true]{secondcolor}
+        {我的emacs配置}
+      \end{beamercolorbox}%
+
+      \begin{beamercolorbox}[wd=0.25\paperwidth, ht=2ex, dp=0.8ex, center, shadow=true]{thirdcolor} 
+        {\insertshortdate{}} \hspace*{2.5mm} 
+        {\color{darkblue}\insertframenumber{}} / \color{seagreen}{\inserttotalframenumber}
+      \end{beamercolorbox}%
+    }
+    \vskip0pt}%
+}
+
+%%%%%%%%%% 设置目录颜色为黑%%%%%%%%%%%
+\hypersetup{linkcolor=black}
+
+%%%%%%%%%% 符号条的操作设置%%%%%%%%%%%
+% \setbeamertemplate{navigation symbols}[only frame symbol]
+% 如果看着不爽可以直接取消,取消的方式为
+\setbeamertemplate{navigation symbols}{}    
+
+%%%%%%%%%%% 定理模块的控制%%%%%%%%%%%
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{qed symbol}{$\blacksquare$}
+\setbeamercolor{block title}{fg=seagreen, bg=snow}
+\setbeamercolor{block body}{fg=black, bg=seashell}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\title{Markdown Mode for Emacs}
+\author{金小海}
+\institute{Shanghai Institute of Applied Physics, CAS}
+\date{February 5, 2017}
+\logo{}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+% \begin{frame}
+%   \frametitle{Outline}
+%   \tableofcontents
+% \end{frame}
+
+\section{Hyperlinks}
+\begin{frame}
+  \frametitle{Hyperlinks}
+  \begin{block}{超链接命令}
+    \begin{enumerate}
+    \item C-c C-a l ~:{插入inline link，其形式为\color{darkmagenta}{[text](url)}.}
+    \item C-c C-a L :{插入reference link，其形式为\color{darkmagenta}{[text][label]}.}
+    \item C-c C-a u :{插入bare url，使用尖括号作为界定符.}
+    \item C-c C-a f :{插入footnote marker在光标处，然后在下面插入footnote的定义.}
+    \item C-c C-a w :{插入类似于inline link的wiki link，其形式为[[WikiLink]].}
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\section{Images}
+\begin{frame}
+  \frametitle{Images}
+  \begin{block}{图片和杂项命令}
+    \begin{enumerate}
+    \item C-c C-i i :{插入inline图片.}
+    \item C-c C-i I :{插入reference style的图片.}
+    \item C-c - :{插入水平分割线.}
+    \item C-c C-c c :{查找未定义的引用.}
+    \item C-c C-c ] :{补全大纲和normalizes所有的水平线.}
+    \item C-c C-o :{当光标在link处时打开链接.}
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\section{Styles}
+\begin{frame}
+  \frametitle{Styles}
+  \begin{block}{格式命令}
+    \begin{enumerate}
+    \item C-c C-s e :{插入斜体控制格式.}
+    \item C-c C-s s :{插入黑体控制格式.}
+    \item C-c C-s c :{插入inline代码.}
+    \item C-c C-s k :{插入kdb的tags.}
+    \item C-c C-s b :{插入blockquote在激活的区域.}
+    \item C-c C-s p :{插入preformatted代码区块.}
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\section{Headings}
+\begin{frame}
+  \frametitle{Headings}
+  \begin{block}{大纲命令}
+    \begin{enumerate}
+    \item C-c C-t h :{自动插入大纲的level.}
+    \item C-c C-t 1 :{插入一级大纲.}
+    \item C-c C-t 2 :{插入二级大纲.}
+    \item C-c C-t 3 :{插入三级大纲.}
+    \item C-c C-t 4 :{插入四级大纲.}
+    \item C-c C-t 5 :{插入五级大纲.}
+    \item C-c C-t 6 :{插入六级大纲.}
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
